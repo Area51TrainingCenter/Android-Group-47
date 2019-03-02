@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Clase02</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_apellido">Apellido</string>
+    <string name="lbl_obtener">Obtener</string>
+    <string name="lbl_enviar">Enviar</string>
+    <string name="lbl_atras">Atrás</string>
+</resources>
