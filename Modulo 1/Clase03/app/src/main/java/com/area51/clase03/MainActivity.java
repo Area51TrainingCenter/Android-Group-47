@@ -18,14 +18,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText usuario, nombre, apellido;
     private RadioButton masculino, femenino;
     private Spinner edad;
-    public static ArrayList<Usuario> lista;
+    private Usuario objUsuario;
+    private int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        lista = new ArrayList<>();
 
         listar = findViewById(R.id.btnListar);
         guardar = findViewById(R.id.btnGuardar);
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         masculino = findViewById(R.id.rbMasculino);
         femenino = findViewById(R.id.rbFemenino);
         edad = findViewById(R.id.spEdad);
+
+        guardar.setTag(false);
 
         ArrayList<String> edades = new ArrayList<>();
         edades.add("Seleccione");
@@ -48,6 +49,35 @@ public class MainActivity extends AppCompatActivity {
                         edades
                 );
         edad.setAdapter(adapter);
+
+        objUsuario = getIntent().getParcelableExtra("item");
+        if (objUsuario != null) {
+            posicion = getIntent().getIntExtra("position", 0);
+            nombre.setText(objUsuario.getNombre());
+            usuario.setText(objUsuario.getUsuario());
+            apellido.setText(objUsuario.getApellido());
+            if (objUsuario.getGenero().equals("Masculino")) {
+                masculino.setChecked(true);
+                femenino.setChecked(false);
+            } else {
+                masculino.setChecked(false);
+                femenino.setChecked(true);
+            }
+
+            for (int i = 0; i < edades.size(); i++) {
+                String item = edades.get(i);
+
+                if (String.valueOf(objUsuario.getEdad())
+                        .equals(item)) {
+                    edad.setSelection(i);
+                    break;
+                }
+            }
+            listar.setVisibility(View.GONE);
+            guardar.setText("Modificar");
+            guardar.setTag(true);
+
+        }
     }
 
     @Override
@@ -95,17 +125,40 @@ public class MainActivity extends AppCompatActivity {
                         Integer.parseInt(valorEdad)
                 );
 
-                //Agregarlo a la lista
-                lista.add(obj);
-                Toast.makeText(MainActivity.this,
-                        "Se guardo el usuario",
-                        Toast.LENGTH_SHORT).show();
+                if (objUsuario == null) {
+                    //Agregarlo a la lista
+                    AndroidApplication.lista.add(obj);
+                    Toast.makeText(MainActivity.this,
+                            "Se guardo el usuario",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    /*
+                    for (int i = 0; i < AndroidApplication.lista.size(); i++) {
+                        Usuario objMod = AndroidApplication.lista.get(i);
+                        if (objMod == objUsuario) {
+                            AndroidApplication.lista.set(i, obj);
+                            break;
+                        }
+                    }
+                    */
+                    AndroidApplication.lista.get(posicion)
+                            .setNombre(valorNombre);
+                    AndroidApplication.lista.get(posicion)
+                            .setApellido(valorApellido);
+                    AndroidApplication.lista.get(posicion)
+                            .setEdad(Integer.parseInt(valorEdad));
+                    AndroidApplication.lista.get(posicion)
+                            .setGenero(valorGenero);
+                    AndroidApplication.lista.get(posicion)
+                            .setUsuario(valorUsuario);
+                    finish();
+                }
 
                 //Limpiar datos
                 usuario.setText("");
                 nombre.setText("");
                 apellido.setText("");
-                masculino.setChecked(false);
+                masculino.setChecked(true);
                 femenino.setChecked(false);
                 edad.setSelection(0);
                 usuario.requestFocus();

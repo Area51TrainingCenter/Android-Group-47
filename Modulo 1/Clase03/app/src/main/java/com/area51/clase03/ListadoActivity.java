@@ -14,7 +14,12 @@ public class ListadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listado);
 
         lista = findViewById(R.id.lvLista);
-        adapter = new UsuarioAdapter(this, MainActivity.lista);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter = new UsuarioAdapter(this, AndroidApplication.lista);
         lista.setAdapter(adapter);
     }
 }

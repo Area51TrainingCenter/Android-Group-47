@@ -1,6 +1,9 @@
 package com.area51.clase03;
 
-public class Usuario {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Usuario implements Parcelable {
     private String usuario,nombre,apellido,genero;
     private int edad;
 
@@ -52,4 +55,38 @@ public class Usuario {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.usuario);
+        dest.writeString(this.nombre);
+        dest.writeString(this.apellido);
+        dest.writeString(this.genero);
+        dest.writeInt(this.edad);
+    }
+
+    protected Usuario(Parcel in) {
+        this.usuario = in.readString();
+        this.nombre = in.readString();
+        this.apellido = in.readString();
+        this.genero = in.readString();
+        this.edad = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Usuario> CREATOR = new Parcelable.Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel source) {
+            return new Usuario(source);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
 }
