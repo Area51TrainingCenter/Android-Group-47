@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView.getMenu()
+                .performIdentifierAction(R.id.nav_listar, 0);
     }
 
     @Override
@@ -93,7 +96,8 @@ public class MainActivity extends AppCompatActivity
         if (fragment != null) {
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
-                    .replace(R.id.contenedor, fragment)
+                    .add(R.id.contenedor, fragment)
+                    .addToBackStack(null)
                     .commit();
         }
 
