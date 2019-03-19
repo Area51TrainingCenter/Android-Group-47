@@ -98,4 +98,55 @@ public class MetodoSQLite {
         }
         return respuesta;
     }
+    public Usuario obtenerUsuarioPorId(int id) {
+        SQLiteDatabase database = conexion.getReadableDatabase();
+
+        Cursor cursor = database.rawQuery(
+                "select * from usuarios where id=?",
+                new String[]{String.valueOf(id)}
+        );
+        Usuario respuesta = null;
+        if (cursor.moveToFirst()) {
+            do {
+                respuesta = new Usuario();
+                respuesta.setId(
+                        cursor.getInt(cursor.getColumnIndex("id"))
+                );
+                respuesta.setNombre(
+                        cursor.getString(cursor.getColumnIndex("nombre"))
+                );
+                respuesta.setApellido(
+                        cursor.getString(cursor.getColumnIndex("apellido"))
+                );
+                respuesta.setGenero(
+                        cursor.getString(cursor.getColumnIndex("genero"))
+                );
+                respuesta.setUsuario(
+                        cursor.getString(cursor.getColumnIndex("usuario"))
+                );
+                respuesta.setContrasena(
+                        cursor.getString(cursor.getColumnIndex("contrasenia"))
+                );
+            } while (cursor.moveToNext());
+        }
+        return respuesta;
+    }
+
+    public void eliminar(int id) {
+        SQLiteDatabase db = conexion.getWritableDatabase();
+        db.delete("usuarios", "id=?",
+                new String[]{String.valueOf(id)});
+    }
+
+    public void actualizar(Usuario usuario) {
+        SQLiteDatabase db = conexion.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("usuario", usuario.getUsuario());
+        values.put("nombre", usuario.getNombre());
+        values.put("apellido", usuario.getApellido());
+        values.put("genero", usuario.getGenero());
+        db.update("usuarios", values, "id=?",
+                new String[]{String.valueOf(usuario.getId())});
+    }
 }

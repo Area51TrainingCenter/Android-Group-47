@@ -31,6 +31,22 @@ public class RegistroActivity extends AppCompatActivity {
         etRepContrasenia = findViewById(R.id.etRepContrasena);
         spGenero = findViewById(R.id.spGenero);
         btnGuardar = findViewById(R.id.btnGuardar);
+
+        btnGuardar.setTag(0);
+
+        Usuario datos = getIntent().getParcelableExtra("item");
+        if (datos != null) {
+            etUsuario.setText(datos.getUsuario());
+            etNombre.setText(datos.getNombre());
+            etApellido.setText(datos.getApellido());
+            if (datos.getGenero().equals("Masculino")) {
+                spGenero.setSelection(0);
+            } else {
+                spGenero.setSelection(1);
+            }
+            btnGuardar.setText("Modificar");
+            btnGuardar.setTag(datos.getId());
+        }
     }
 
     @Override
@@ -78,6 +94,14 @@ public class RegistroActivity extends AppCompatActivity {
                 } else {
                     etRepContrasenia.setError(null);
                 }
+
+                if (!contrasenia.equals(repContrasenia)) {
+                    etContrasenia.setError("Contraseñas no coinciden");
+                    return;
+                } else {
+                    etContrasenia.setError(null);
+                }
+
                 MetodoSQLite sqLite = new MetodoSQLite(RegistroActivity.this);
                 Usuario obj = new Usuario();
                 obj.setUsuario(usuario);
@@ -85,16 +109,25 @@ public class RegistroActivity extends AppCompatActivity {
                 obj.setApellido(apellido);
                 obj.setGenero(genero);
                 obj.setContrasena(contrasenia);
-                long resultado = sqLite.guardarUsuario(obj);
-                if (resultado == 0) {
+                if ((int) btnGuardar.getTag() > 0) {
+                    obj.setId((int) btnGuardar.getTag());
+                    sqLite.actualizar(obj);
                     Toast.makeText(RegistroActivity.this,
-                            "Ocurrio un error", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistroActivity.this,
-                            "Registro exitoso", Toast.LENGTH_SHORT).show();
+                            "Se actualizo correctamente", Toast.LENGTH_SHORT).show();
                     finish();
+                } else {
+                    long resultado = sqLite.guardarUsuario(obj);
+                    if (resultado == 0) {
+                        Toast.makeText(RegistroActivity.this,
+                                "Ocurrio un error", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegistroActivity.this,
+                                "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
             }
+
         });
     }
 }
