@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Clase01_2</string>
+    <string name="lbl_agregar">Agregar</string>
+    <string name="lbl_marca">Marca</string>
+    <string name="lbl_modelo">Modelo</string>
+    <string name="lbl_cantidad">Cantidad</string>
+    <string name="lbl_descripcion">Descripcion</string>
+    <string name="lbl_guardar">Guardar</string>
+</resources>

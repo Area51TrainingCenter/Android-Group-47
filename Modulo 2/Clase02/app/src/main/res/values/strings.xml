@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Clase02</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="lbl_iniciar">Iniciar</string>
+    <string name="lbl_registrar">Registrar</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_eliminar">Eliminar</string>
+</resources>
