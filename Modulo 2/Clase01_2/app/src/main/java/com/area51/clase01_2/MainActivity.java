@@ -23,17 +23,16 @@ public class MainActivity extends AppCompatActivity {
 
         btnAgregar = findViewById(R.id.btnAgregar);
         lvLista = findViewById(R.id.lvLista);
-
-        MetodoRealm metodoRealm = new MetodoRealm();
-        RealmResults<Producto> lista = metodoRealm.listar();
-        adapter = new ProductoAdapter(lista, this);
-        lvLista.setAdapter(adapter);
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        MetodoRealm metodoRealm = new MetodoRealm();
+        RealmResults<Producto> lista = metodoRealm.listar();
+        adapter = new ProductoAdapter(lista, this);
+        lvLista.setAdapter(adapter);
 
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override

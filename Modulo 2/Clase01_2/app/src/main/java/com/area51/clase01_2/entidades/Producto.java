@@ -1,9 +1,12 @@
 package com.area51.clase01_2.entidades;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Producto extends RealmObject {
+public class Producto extends RealmObject implements Parcelable {
     @PrimaryKey
     private String id;
     private String marca;
@@ -50,4 +53,41 @@ public class Producto extends RealmObject {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
+        dest.writeString(this.marca);
+        dest.writeString(this.modelo);
+        dest.writeInt(this.cantidad);
+        dest.writeString(this.descripcion);
+    }
+
+    public Producto() {
+    }
+
+    protected Producto(Parcel in) {
+        this.id = in.readString();
+        this.marca = in.readString();
+        this.modelo = in.readString();
+        this.cantidad = in.readInt();
+        this.descripcion = in.readString();
+    }
+
+    public static final Parcelable.Creator<Producto> CREATOR = new Parcelable.Creator<Producto>() {
+        @Override
+        public Producto createFromParcel(Parcel source) {
+            return new Producto(source);
+        }
+
+        @Override
+        public Producto[] newArray(int size) {
+            return new Producto[size];
+        }
+    };
 }
