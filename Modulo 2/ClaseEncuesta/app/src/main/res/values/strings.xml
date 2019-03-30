@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ClaseEncuesta</string>
+    <string name="lbl_pregunta">Pregunta</string>
+    <string name="lbl_responder">Responder</string>
+    <string name="lbl_opcion">Opción</string>
+    <string name="lbl_guardar">Guardar</string>
+    <string name="lbl_visualizar">Visualizar</string>
+</resources>
