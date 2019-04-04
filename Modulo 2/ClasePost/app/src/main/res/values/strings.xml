@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ClasePost</string>
+    <string name="lbl_numero_documento">Número Documento</string>
+    <string name="lbl_pass">Contraseña</string>
+    <string name="lbl_primer_nombre">Primer Nombre</string>
+    <string name="lbl_segundo_nombre">Segundo Nombre</string>
+    <string name="lbl_apellido_paterno">Apellido Paterno</string>
+    <string name="lbl_apellido_materno">Apellido Materno</string>
+    <string name="lbl_fec_nac">Fecha Nacimiento</string>
+    <string name="lbl_telefono_fijo">Telefono Fijo</string>
+    <string name="lbl_telefono_cel">Telefono Celular</string>
+    <string name="lbl_correo">Correo</string>
+    <string name="lbl_des_dire">Dirección</string>
+    <string name="lbl_guardar">Guardar</string>
+    <string name="lbl_usuario">Usuario</string>
+    <string name="lbl_login">Iniciar Sesión</string>
+    <string name="lbl_registrar">Registrar</string>
+</resources>
