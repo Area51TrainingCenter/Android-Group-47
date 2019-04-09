@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ClaseMapa</string>
+    <string name="lbl_direccion">Dirección</string>
+    <string name="lbl_buscar">buscar</string>
+    <string name="lbl_latitud">Latitud</string>
+    <string name="lbl_longitud">Longitud</string>
+    <string name="lbl_guardar">Guardar</string>
+    <string name="lbl_mostrar">Mostrar</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
