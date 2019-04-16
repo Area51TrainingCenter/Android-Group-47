@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ClaseKotlin</string>
+    <string name="lbl_nombre">Nombre</string>
+    <string name="lbl_mostrar">Mostrar</string>
+    <string name="lbl_opciones">Opciones</string>
+    <string name="lbl_valor_1">Valor 1</string>
+    <string name="lbl_valor_2">Valor 2</string>
+    <string name="lbl_for">For</string>
+    <string name="lbl_if">If</string>
+    <string name="lbl_when">When</string>
+</resources>
