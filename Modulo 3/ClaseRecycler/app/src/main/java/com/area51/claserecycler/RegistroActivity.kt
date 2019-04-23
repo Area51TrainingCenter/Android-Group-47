@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.area51.claserecycler.database.MetodoDBImpl
-import com.area51.claserecycler.entidades.Persona
+import com.area51.claserecycler.entidades.PersonaEntidad
 import kotlinx.android.synthetic.main.activity_registro.*
 
 class RegistroActivity : AppCompatActivity() {
@@ -22,21 +22,28 @@ class RegistroActivity : AppCompatActivity() {
             val apellido = etApellido.text.toString()
             val genero = spGenero.selectedItem.toString()
 
-            val persona = Persona()
+            val persona = PersonaEntidad()
             persona.nombre = nombre
             persona.apellido = apellido
             persona.genero = genero
             val database = MetodoDBImpl()
             val respuesta = database.registrar(persona)
             if (respuesta != null) {
+
+                etNombre.setText("")
+                etApellido.setText("")
+                spGenero.setSelection(0)
+
+                finish()
+
                 Toast.makeText(
-                    this, "Se registro",
-                    Toast.LENGTH_SHORT
+                        this, "Se registro",
+                        Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Toast.makeText(
-                    this, "Ocurrio un error",
-                    Toast.LENGTH_SHORT
+                        this, "Ocurrio un error",
+                        Toast.LENGTH_SHORT
                 ).show()
             }
         }

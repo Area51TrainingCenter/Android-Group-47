@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         lista = arrayListOf()
-        //lista!!.add(Persona("Johann", "Jara", "Masculino"))
+        //lista!!.add(PersonaEntidad("Johann", "Jara", "Masculino"))
     }
 
     override fun onStart() {
@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         val database = MetodoDBImpl()
         val datos = database.listar()
         if (datos != null) {
-            for (item: com.area51.claserecycler.entidades.Persona in datos) {
-                val persona = Persona(item.nombre!!, item.apellido!!, item.genero!!)
+            for (item: com.area51.claserecycler.entidades.PersonaEntidad in datos) {
+                val persona = Persona(item.id, item.nombre!!, item.apellido!!, item.genero!!)
                 lista!!.add(persona)
             }
         }
