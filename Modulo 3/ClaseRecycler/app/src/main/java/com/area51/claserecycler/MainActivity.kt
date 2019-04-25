@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var lista: ArrayList<Persona>? = null
+    var adapter: PersonaAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +33,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val adapter = PersonaAdapter(this, lista!!)
+        adapter = PersonaAdapter(this, lista!!)
         rvDatos.layoutManager = LinearLayoutManager(this)
         rvDatos.adapter = adapter
+    }
+
+    fun actualizarLista() {
+        adapter!!.notifyDataSetChanged()
     }
 
     override fun onResume() {

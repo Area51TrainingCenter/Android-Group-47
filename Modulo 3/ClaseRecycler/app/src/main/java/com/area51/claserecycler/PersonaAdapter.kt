@@ -2,10 +2,12 @@ package com.area51.claserecycler
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.area51.claserecycler.database.MetodoDBImpl
 import kotlinx.android.synthetic.main.item_persona.view.*
 
@@ -20,7 +22,8 @@ class PersonaAdapter(val context: Context,
     }
 
     class PersonaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun init(persona: Persona, context: Context, lista: ArrayList<Persona>) {
+        fun init(persona: Persona, context: Context,
+                 lista: ArrayList<Persona>) {
             itemView.tvNombre.text = persona.nombre
             itemView.tvApellido.text = persona.apellido
             itemView.tvGenero.text = persona.genero
@@ -33,10 +36,14 @@ class PersonaAdapter(val context: Context,
                     val sql = MetodoDBImpl()
                     sql.eliminar(persona.id)
                     lista.remove(persona)
+                    (context as MainActivity).actualizarLista()
+                    Toast.makeText(context, "Se elimino", Toast.LENGTH_SHORT).show()
 
                 }
                 dialog.setNegativeButton("Actualizar") { dialogInterface, i ->
-
+                    val intent = Intent(context, RegistroActivity::class.java)
+                    intent.putExtra("item", persona)
+                    context.startActivity(intent)
                 }
                 dialog.show()
             }

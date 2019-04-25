@@ -12,8 +12,8 @@ class MetodoDBImpl : MetodoDB {
             realm.beginTransaction()
 
             val persona = realm.where(PersonaEntidad::class.java)
-                    .equalTo("id", id)
-                    .findFirst()
+                .equalTo("id", id)
+                .findFirst()
             if (persona != null) {
                 persona.deleteFromRealm()
                 realm.commitTransaction()
@@ -33,7 +33,7 @@ class MetodoDBImpl : MetodoDB {
         var resultado: PersonaEntidad? = null
         try {
             realm.beginTransaction()
-            resultado = realm.copyToRealm(item)
+            resultado = realm.copyToRealmOrUpdate(item)
             realm.commitTransaction()
         } catch (e: Exception) {
             realm.cancelTransaction()
