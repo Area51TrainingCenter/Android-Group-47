@@ -3,6 +3,7 @@ package com.area51.clasemvp.ui.login.presenter
 import com.area51.clasemvp.net.entidad.Usuario
 import com.area51.clasemvp.net.login.callback.LoginCallback
 import com.area51.clasemvp.net.login.interactor.LoginInteractor
+import com.area51.clasemvp.net.login.interactor.LoginInteractor2
 import com.area51.clasemvp.ui.Presenter
 import com.area51.clasemvp.ui.login.views.LoginView
 
@@ -16,11 +17,11 @@ class LoginPresenter : Presenter<LoginView>, LoginCallback {
     }
 
     var view: LoginView? = null
-    var interactor: LoginInteractor? = null
+    var interactor: LoginInteractor2? = null
 
     override fun agregarView(view: LoginView) {
         this.view = view
-        interactor = LoginInteractor()
+        interactor = LoginInteractor2()
     }
 
     override fun eliminarView() {
