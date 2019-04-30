@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ClasePush</string>
+    <string name="msg_token_fmt">Se obtuvo token</string>
+</resources>

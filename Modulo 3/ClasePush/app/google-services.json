@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "319456464969",
+    "firebase_url": "https://hardy-iridium-237101.firebaseio.com",
+    "project_id": "hardy-iridium-237101",
+    "storage_bucket": "hardy-iridium-237101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319456464969:android:6d02f8b0d8087835",
+        "android_client_info": {
+          "package_name": "com.area51.clasepush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319456464969-joc4sk89jv64rdiogeqtgsgf93g64170.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX9LaRM5ljYe4JPtNiEQQX-f6w4ILI1PM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319456464969-joc4sk89jv64rdiogeqtgsgf93g64170.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
