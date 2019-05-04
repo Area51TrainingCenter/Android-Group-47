@@ -3,6 +3,7 @@ package com.area51.clasemvp.net.registro.interactor
 import com.area51.clasemvp.net.database.MetodoRealmImpl
 import com.area51.clasemvp.net.entidad.Usuario
 import com.area51.clasemvp.net.registro.callback.RegistroCallback
+import com.area51.clasemvp.net.ws.MetodoWS
 
 class RegistroInteractor {
     fun registrar(usuario: Usuario,

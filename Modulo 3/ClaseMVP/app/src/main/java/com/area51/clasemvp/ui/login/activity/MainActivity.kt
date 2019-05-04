@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(), LoginView {
 
         presenter = LoginPresenter()
         presenter!!.agregarView(this)
+
+        //presenter!!.cargarDatos()
     }
 
     override fun onDestroy() {

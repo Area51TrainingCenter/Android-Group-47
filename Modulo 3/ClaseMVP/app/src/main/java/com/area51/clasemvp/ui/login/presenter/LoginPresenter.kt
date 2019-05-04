@@ -17,11 +17,11 @@ class LoginPresenter : Presenter<LoginView>, LoginCallback {
     }
 
     var view: LoginView? = null
-    var interactor: LoginInteractor2? = null
+    var interactor: LoginInteractor? = null
 
     override fun agregarView(view: LoginView) {
         this.view = view
-        interactor = LoginInteractor2()
+        interactor = LoginInteractor()
     }
 
     override fun eliminarView() {
